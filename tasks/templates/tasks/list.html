@@ -15,7 +15,16 @@
 -->
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-  <h1>Home Page</h1>
+  {% for task in tasks%}
+  <div class="card my-3">
+    <div class="card-header">{{task.title}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{task.description}}</h5>
+      <p class="card-text">{{task.created_at}}</p>
+      <a href="#" class="btn btn-primary">Details</a>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
