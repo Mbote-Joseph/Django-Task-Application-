@@ -15,16 +15,14 @@
 -->
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-  {% for task in tasks%}
   <div class="card my-3">
     <div class="card-header">{{task.title}}</div>
     <div class="card-body">
       <h5 class="card-title">{{task.description}}</h5>
       <p class="card-text">{{task.created_at}}</p>
-      <a href="./tasks_detail/{{task.id}}" class="btn btn-primary">Details</a>
+      <a href="{% url 'tasks_list' %}" class="btn btn-primary">Back</a>
     </div>
   </div>
-  {% endfor %}
 </div>
 
 {% endblock %}

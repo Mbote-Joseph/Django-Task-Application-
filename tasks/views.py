@@ -45,3 +45,13 @@ class TaskListView(ListView):
         context['title'] = 'List'
         context['now'] = datetime.now()
         return context
+
+class TaskDetailView(DetailView):
+    model = Tasks
+    context_object_name= 'task'
+    template_name = 'tasks/detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Detail'
+        context['now'] = datetime.now()
+        return context

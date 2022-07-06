@@ -5,4 +5,5 @@ urlpatterns =[
     path('tasks', views.TaskView.as_view(), name='tasks'),
     path('tasks_create', views.TasksCreateView.as_view(), name='tasks_create'),
     path('tasks_list', views.TaskListView.as_view(), name='tasks_list'),
+    path('tasks_detail/<int:pk>', views.TaskDetailView.as_view(), name='tasks_detail'),
 ]
