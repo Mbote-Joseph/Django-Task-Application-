@@ -55,3 +55,29 @@ class TaskDetailView(DetailView):
         context['title'] = 'Detail'
         context['now'] = datetime.now()
         return context
+
+class TaskUpdateView(UpdateView):
+    model = Tasks
+    fields = ['title', 'description']
+    template_name = 'tasks/task_form.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Update'
+        context['now'] = datetime.now()
+        return context
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    def get_success_url(self):
+        return '/tasks_list'
+
+class TaskDeleteView(DeleteView):
+    model = Tasks
+    template_name = 'tasks/task_delete.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Delete'
+        context['now'] = datetime.now()
+        return context
+    def get_success_url(self):
+        return '/tasks_list'

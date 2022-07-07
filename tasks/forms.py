@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from tkinter import Widget
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import Tasks
@@ -21,10 +20,9 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Tasks
         fields = ['title', 'description']
-        Widgets ={
+        widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
-
         }
 
     def clean_title(self):

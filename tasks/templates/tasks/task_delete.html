@@ -14,17 +14,19 @@
  limitations under the License.
 -->
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-  <div class="card my-3">
-    <div class="card-header">{{task.title}}</div>
-    <div class="card-body">
-      <h5 class="card-title">{{task.description}}</h5>
-      <p class="card-text">{{task.created_at}}</p>
-      <a href="{% url 'tasks_list' %}" class="btn btn-primary">Back</a>
-      <a href="../tasks_update/{{task.id}}" class="btn btn-success">Edit</a>
-      <a href="../tasks_delete/{{task.id}}" class="btn btn-danger">Delete</a>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="container">
+    <div class="card my-3">
+      <div class="card-header">This action can't be undone</div>
+      <div class="card-body">
+        <h5 class="card-title">Are you sure you want to del{{task.title}}</h5>
+        <p class="card-text">{{task.created_at}}</p>
+        <input type="submit" class="btn btn-danger" value="Confirm" />
+      </div>
     </div>
   </div>
-</div>
+</form>
 
 {% endblock %}

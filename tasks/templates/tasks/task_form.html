@@ -17,8 +17,12 @@
 <div class="container">
   <form method="POST">
     {% csrf_token %} {{form}}
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
   </form>
-</div>
+  {% if form.errors %}
+  <div class="alert alert-danger my-4">{{form.errors.title.as_text}}</div>
+  {% endif %}
 
+  <a href="{% url 'tasks_list' %}" class="btn btn-warning my-5">Cancel </a>
+</div>
 {% endblock %}
